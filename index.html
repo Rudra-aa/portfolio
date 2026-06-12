@@ -681,6 +681,11 @@
             z-index: 4;
             opacity: 0;
             pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s ease !important;
+        }
+
+        .hero-portrait:has(img:hover) .constellation-card {
+            opacity: 1 !important;
         }
 
         .cc-val {
@@ -3400,11 +3405,6 @@
                 [document.querySelector('.hero-side-nav.right'), 1100],
                 [document.querySelector('.hero-portrait'), 500],
                 [document.querySelector('.hero-side-nav.left'), 1200],
-                [document.querySelector('.cc-1'), 1300],
-                [document.querySelector('.cc-2'), 1400],
-                [document.querySelector('.cc-3'), 1500],
-                [document.querySelector('.cc-4'), 1600],
-                [document.querySelector('.cc-5'), 1700],
             ];
             els.forEach(([el, delay]) => {
                 if (!el) return;
