@@ -188,10 +188,17 @@
         #cur-dot,
         #cur-ring {
             position: fixed;
+            top: 0;
+            left: 0;
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
-            transform: translate(-50%, -50%);
+            will-change: transform;
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        @media (max-width: 768px) {
+            #cur-dot, #cur-ring { display: none !important; }
         }
 
         #cur-dot {
@@ -555,6 +562,7 @@
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
             z-index: 20;
             justify-content: center;
+            will-change: transform;
         }
 
         .hero-side-nav.right a {
@@ -1947,14 +1955,25 @@
         @media (max-width: 1024px) {
             #hero {
                 grid-template-columns: 1fr;
+                align-items: center;
+                padding-top: 80px;
             }
 
             .hero-portrait {
-                display: none;
+                display: flex;
+                height: 50vh;
+                width: 100%;
+                align-items: center;
+            }
+
+            .hero-portrait img {
+                max-height: 100%;
+                max-width: 100%;
+                object-fit: contain;
             }
 
             .hero-content {
-                padding: 140px 36px 80px;
+                padding: 40px 36px 80px;
             }
 
             .manifesto-inner {
@@ -3268,14 +3287,21 @@
         (function () {
             const dot = document.getElementById('cur-dot');
             const ring = document.getElementById('cur-ring');
-            let rx = 0, ry = 0, dx = 0, dy = 0;
+            if (!dot || !ring) return;
+            
+            // Disable cursor script on mobile to save CPU
+            if (window.innerWidth <= 768) return;
+
+            let rx = window.innerWidth / 2, ry = window.innerHeight / 2;
+            let dx = rx, dy = ry;
+            
             document.addEventListener('mousemove', e => {
                 dx = e.clientX; dy = e.clientY;
-                dot.style.left = dx + 'px'; dot.style.top = dy + 'px';
+                dot.style.transform = `translate3d(${dx}px, ${dy}px, 0) translate(-50%, -50%)`;
             });
             (function loop() {
                 rx += (dx - rx) * .13; ry += (dy - ry) * .13;
-                ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+                ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
                 requestAnimationFrame(loop);
             })();
             document.querySelectorAll('a,button').forEach(el => {
@@ -3360,30 +3386,30 @@
             const heroPortrait = document.querySelector('.hero-portrait');
             const heroImg = document.querySelector('.hero-portrait img');
             if (heroPortrait && heroImg) {
-                heroPortrait.addEventListener('mousemove', e => {
+                heroImg.style.willChange = 'transform';
+                const handleMove = e => {
                     const rect = heroPortrait.getBoundingClientRect();
-                    const xNorm = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-                    const yNorm = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    const xNorm = ((clientX - rect.left) / rect.width - 0.5) * 2;
+                    const yNorm = ((clientY - rect.top) / rect.height - 0.5) * 2;
                     
                     gsap.to(heroImg, {
                         rotateX: -yNorm * 10,
                         rotateY: xNorm * 10,
                         translateZ: 80,
                         scale: 1.02,
-                        duration: 0.6,
+                        duration: e.touches ? 0.3 : 0.6,
                         ease: "power2.out"
                     });
-                });
-                heroPortrait.addEventListener('mouseleave', () => {
-                    gsap.to(heroImg, {
-                        rotateX: 0,
-                        rotateY: 0,
-                        translateZ: 60,
-                        scale: 1,
-                        duration: 1,
-                        ease: "power2.out"
-                    });
-                });
+                };
+                const handleLeave = () => {
+                    gsap.to(heroImg, { rotateX: 0, rotateY: 0, translateZ: 60, scale: 1, duration: 1, ease: "power2.out" });
+                };
+                heroPortrait.addEventListener('mousemove', handleMove);
+                heroPortrait.addEventListener('mouseleave', handleLeave);
+                heroPortrait.addEventListener('touchmove', handleMove, { passive: true });
+                heroPortrait.addEventListener('touchend', handleLeave);
             }
 
 
