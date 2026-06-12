@@ -182,6 +182,10 @@
             color: var(--black);
         }
 
+        @media (max-width: 768px) {
+            body { cursor: auto !important; }
+        }
+
         /* ─────────────────────────────────────────────
    CURSOR
 ───────────────────────────────────────────── */
@@ -3213,7 +3217,7 @@
             <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&q=75&auto=format&fit=crop"
                 alt="" aria-hidden="true" loading="lazy">
         </div>
-        <div class="contact-inner deep-glass magnetic"
+        <div class="contact-inner deep-glass"
             style="margin: 0 auto; display: flex; flex-direction: column; align-items: center; cursor: pointer;">
             <div class="contact-eyebrow rv">What's next</div>
             <h2 class="contact-title rv d1">Let's Build<br><em>Together.</em></h2>
@@ -3297,11 +3301,11 @@
             
             document.addEventListener('mousemove', e => {
                 dx = e.clientX; dy = e.clientY;
-                dot.style.transform = `translate3d(${dx}px, ${dy}px, 0) translate(-50%, -50%)`;
+                dot.style.transform = `translate(${dx}px, ${dy}px) translate(-50%, -50%)`;
             });
             (function loop() {
                 rx += (dx - rx) * .13; ry += (dy - ry) * .13;
-                ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+                ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
                 requestAnimationFrame(loop);
             })();
             document.querySelectorAll('a,button').forEach(el => {
