@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rudra Pratap Singh - AI/ML Engineer Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #1e40af;
+            --accent-light: #eff6ff;
+            --bg: #ffffff;
+            --border: #e2e8f0;
+            --border-strong: #0f172a;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font);
+            color: var(--text-main);
+            background: #f1f5f9;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 36px auto;
+            background: var(--bg);
+            padding: 18mm 20mm;
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+            border-radius: 3px;
+        }
+
+        /* HEADER */
+        header {
+            border-bottom: 2.5px solid var(--border-strong);
+            padding-bottom: 14px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 10px;
+            letter-spacing: 0.01em;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 18px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .contact-info a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .contact-info a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* SECTIONS */
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+            margin-top: 20px;
+            margin-bottom: 14px;
+        }
+
+        /* SUMMARY */
+        .summary {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ITEMS */
+        .item {
+            margin-bottom: 14px;
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+            gap: 8px;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .item-title a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .item-title a:hover {
+            color: var(--accent);
+        }
+
+        .item-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .item-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+            flex-shrink: 0;
+        }
+
+        .item-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .item-desc ul {
+            padding-left: 16px;
+            margin-top: 4px;
+        }
+
+        .item-desc li {
+            margin-bottom: 3px;
+            line-height: 1.55;
+        }
+
+        .tech-stack {
+            font-size: 0.78rem;
+            font-family: 'SFMono-Regular', 'Consolas', monospace;
+            color: var(--accent);
+            margin-top: 7px;
+            background: var(--accent-light);
+            padding: 3px 8px;
+            border-radius: 3px;
+            display: inline-block;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 7px 16px;
+            font-size: 0.875rem;
+        }
+
+        .skill-category {
+            font-weight: 600;
+            color: var(--text-main);
+            padding-top: 1px;
+        }
+
+        .skill-list {
+            color: var(--text-muted);
+        }
+
+        /* EDU */
+        .edu-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        /* HIGHLIGHT BADGE */
+        .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+            padding: 1px 6px;
+            border-radius: 3px;
+            margin-left: 6px;
+            vertical-align: middle;
+            letter-spacing: 0.03em;
+        }
+
+        .note {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 14px;
+            font-style: italic;
+        }
+
+        @media print {
+            body {
+                background: none;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                padding: 10mm 14mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <header>
+            <h1>Rudra Pratap Singh</h1>
+            <div class="subtitle">AI/ML Engineer &amp; Full-Stack Product Builder · B.Tech AI/ML, MITS Gwalior (3rd
+                Year)</div>
+            <div class="contact-info">
+                <span>📧 <a href="rudrpratap5036@gmail.com">rudrpratap5036@gmail.com</a></span>
+                <span>🔗 <a href="https://linkedin.com/in/rudra-p-3ab04b308"
+                        target="_blank">linkedin.com/in/rudra-p-3ab04b308</a></span>
+                <span>💻 <a href="https://github.com/Rudra-aa" target="_blank">github.com/Rudra-aa</a></span>
+                <span>🌍 <a href="https://rudra-aa.github.io/portfolio" target="_blank">Portfolio</a></span>
+                <span>📍 Gwalior, MP</span>
+            </div>
+        </header>
+
+        <section>
+            <div class="summary">
+                3rd-year B.Tech AI/ML student with hands-on experience shipping end-to-end AI systems — from model
+                training and real-time inference pipelines to production-deployed web applications. Focused on Speech
+                AI, Computer Vision, and LLM-powered products. Actively seeking internship opportunities where I can
+                contribute to real engineering problems.
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">AI / ML</div>
+                <div class="skill-list">CNNs, TensorFlow, OpenCV, Whisper (ASR), Edge-TTS, LLMs (Groq, OpenAI),
+                    LangChain, NLP, scikit-learn, RAG Pipelines</div>
+
+                <div class="skill-category">Languages</div>
+                <div class="skill-list">Python, JavaScript, C++, Java, SQL</div>
+
+                <div class="skill-category">Backend</div>
+                <div class="skill-list">FastAPI, Node.js, WebSocket, RESTful APIs, Firebase (Auth + Firestore)</div>
+
+                <div class="skill-category">Frontend</div>
+                <div class="skill-list">React, Next.js, Vanilla JS, TailwindCSS, HTML/CSS</div>
+
+                <div class="skill-category">Tools</div>
+                <div class="skill-list">Git, GitHub, Vercel, MongoDB, PostgreSQL</div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Projects</h2>
+
+            <!-- ScribeAI -->
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">
+                        <a href="https://github.com/Rudra-aa" target="_blank">ScribeAI</a> — Real-Time Multilingual
+                        Translation Platform
+                        <span class="badge">LIVE</span>
+                    </div>
+                    <div class="item-date">2025 – 2026</div>
+                </div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Built a full-stack real-time translation app (React + Python/WebSocket backend) with a
+                            12-phase pipeline overhaul covering structured logging, conversation memory, chunked
+                            translation, and speaker management.</li>
+                        <li>Integrated OpenAI Whisper for ASR and Groq LLMs for ultra-low latency translation across
+                            <strong>50+ languages</strong>, with AI dubbing via Edge-TTS for localized audio output.
+                        </li>
+                        <li>Engineered performance budgets and scalability modes; diagnosed and resolved persistent
+                            language-detection silent-fallback and mid-session WebSocket drop issues.</li>
+                    </ul>
+                    <div class="tech-stack">Whisper · Groq LLM · Edge-TTS · FastAPI · WebSocket · React</div>
+                </div>
+            </div>
+
+            <!-- Attender -->
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">
+                        <a href="https://github.com/Rudra-aa" target="_blank">Attender</a> — GPS-Fenced Face Recognition
+                        Attendance System
+                    </div>
+                    <div class="item-date">2026</div>
+                </div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Designed an automated classroom attendance system combining GPS geofencing with real-time
+                            facial recognition, eliminating manual roll calls.</li>
+                        <li>Optimized live video processing pipelines with OpenCV for high accuracy and stable frame
+                            rates on standard hardware.</li>
+                        <li>Built a Python/FastAPI backend with a React frontend; system handles concurrent student
+                            identification in real time.</li>
+                    </ul>
+                    <div class="tech-stack">Python · OpenCV · FastAPI · React · GPS Geofencing</div>
+                </div>
+            </div>
+
+            <!-- GlobeRoutes -->
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">
+                        <a href="https://rudra-aa.github.io" target="_blank">GlobeRoutes</a> — World Tourism Explorer
+                        <span class="badge">DEPLOYED</span>
+                    </div>
+                    <div class="item-date">2025</div>
+                </div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Deployed a world tourism explorer web app (Vanilla HTML/CSS/JS) on Vercel; live and publicly
+                            accessible.</li>
+                        <li>Maintained clean public repo hygiene — removed sensitive files via
+                            <code>git filter-repo</code>, fixed broken assets, and wrote a polished README with working
+                            badges.
+                        </li>
+                    </ul>
+                    <div class="tech-stack">HTML · CSS · Vanilla JS · Vercel</div>
+                </div>
+            </div>
+
+            <!-- Emotion Detection -->
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">
+                        <a href="https://github.com/Rudra-aa" target="_blank">Real-Time Emotion Detection</a>
+                    </div>
+                    <div class="item-date">2025</div>
+                </div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Trained CNN models with TensorFlow to classify human emotions from facial micro-expressions
+                            via live webcam inference using OpenCV.</li>
+                    </ul>
+                    <div class="tech-stack">TensorFlow · OpenCV · Python · CNNs</div>
+                </div>
+            </div>
+
+            <!-- SwaadSe -->
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">
+                        SwaadSe.in — Home Kitchen Food Delivery (Gwalior)
+                    </div>
+                    <div class="item-date">2025</div>
+                </div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Built a full-featured food delivery web app for local home kitchens — Firebase Auth +
+                            Firestore backend, admin panel, cart, and modular JS architecture.</li>
+                        <li>Implemented a 3D premium UI redesign and comprehensive bug-fix pass covering auth flows,
+                            performance optimization, and mobile responsiveness.</li>
+                    </ul>
+                    <div class="tech-stack">HTML · CSS · Vanilla JS · Firebase Auth · Firestore</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <h2 class="section-title">Education</h2>
+            <div class="item">
+                <div class="edu-row">
+                    <div>
+                        <div class="item-title">B.Tech — Artificial Intelligence &amp; Machine Learning</div>
+                        <div class="item-subtitle">Madhav Institute of Technology &amp; Science (MITS) - deemed
+                            university , Gwalior</div>
+                    </div>
+                    <div class="item-date">2023 – 2027</div>
+                </div>
+                <div class="item-desc" style="margin-top:6px; font-size:0.82rem; color:#64748b;">
+                    CGPA: 7.00 &nbsp;·&nbsp; Relevant coursework: Machine Learning, Data Structures, Computer
+                    Vision, Database Systems
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>
