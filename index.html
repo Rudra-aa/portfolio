@@ -631,23 +631,6 @@
             perspective: 1000px;
         }
 
-        .hero-bg-text {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%) translateZ(-50px);
-            font-size: 26vw;
-            font-weight: 900;
-            color: transparent;
-            -webkit-text-stroke: 2px rgba(212, 165, 116, 0.2);
-            z-index: 0;
-            white-space: nowrap;
-            letter-spacing: -0.02em;
-            pointer-events: none;
-            font-family: 'Playfair Display', serif;
-            opacity: 0.8;
-        }
-
         .hero-portrait img {
             max-height: 105vh;
             width: auto;
@@ -659,7 +642,7 @@
             transform: translateZ(60px);
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
             position: relative;
-            z-index: 5;
+            z-index: 2;
         }
 
         .hero-portrait img:hover {
@@ -2225,7 +2208,6 @@
                 <div class="cc-line"></div>
             </div>
 
-            <div class="hero-bg-text">RUDRA</div>
             <img src="./assets/Rp.png" alt="Rudra Pratap Singh" loading="eager" decoding="async">
             <div class="portrait-fade"></div>
         </div>
