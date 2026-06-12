@@ -646,7 +646,6 @@
         }
 
         .hero-portrait img:hover {
-            transform: translateZ(80px) rotateY(-4deg) scale(1.02);
             filter: contrast(1.15) brightness(1.1) drop-shadow(0 40px 60px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 100px rgba(212, 165, 116, 0.25));
         }
 
@@ -3447,6 +3446,36 @@
                 gsap.to('.cc-4', { x: x * 0.4, y: y * 0.4, duration: 1, ease: "power2.out" });
                 gsap.to('.cc-5', { x: x * -0.3, y: y * 0.2, duration: 1, ease: "power2.out" });
             });
+
+            // Hero Image 3D Parallax Tilt
+            const heroPortrait = document.querySelector('.hero-portrait');
+            const heroImg = document.querySelector('.hero-portrait img');
+            if (heroPortrait && heroImg) {
+                heroPortrait.addEventListener('mousemove', e => {
+                    const rect = heroPortrait.getBoundingClientRect();
+                    const xNorm = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+                    const yNorm = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+                    
+                    gsap.to(heroImg, {
+                        rotateX: -yNorm * 10,
+                        rotateY: xNorm * 10,
+                        translateZ: 80,
+                        scale: 1.02,
+                        duration: 0.6,
+                        ease: "power2.out"
+                    });
+                });
+                heroPortrait.addEventListener('mouseleave', () => {
+                    gsap.to(heroImg, {
+                        rotateX: 0,
+                        rotateY: 0,
+                        translateZ: 60,
+                        scale: 1,
+                        duration: 1,
+                        ease: "power2.out"
+                    });
+                });
+            }
 
 
             // Project Reveal Animations
