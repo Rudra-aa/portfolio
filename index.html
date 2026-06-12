@@ -3431,6 +3431,13 @@
                     });
                 }
 
+                document.querySelectorAll('.pm-cta').forEach(cta => {
+                    cta.addEventListener('click', () => {
+                        projModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+
                 const updateSlide = (newIndex) => {
                     gsap.to(slides[currSlide], {
                         opacity: 0, duration: 0.4, onComplete: () => {
